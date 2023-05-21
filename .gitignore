@@ -1,0 +1,9 @@
+data/
+__pycache__/
+.ipynb*
+.Trash-1001
+*.pkl
+*pt
+.env
+*.Dockerfile
+wip/
