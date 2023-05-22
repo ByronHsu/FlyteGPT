@@ -1,5 +1,5 @@
 # 🦅🔗 Building Flyte LangChain Bot on Flyte
-The Flyte LangChain Bot is designed to ingest documents into a queriable format, query relevant documents based on user questions, and utilize a chat model to generate responses. In this guide, we'll walk through the steps to build the bot on Flyte, a platform that simplifies running Kubernetes pods on machines.
+The Flyte LangChain Bot is designed to ingest documents into a queriable format, query relevant documents based on user questions, and utilize a chat model to generate responses. In this guide, we'll walk through the steps to build the bot on Flyte
 
 ## Interesting Results
 
@@ -114,16 +114,6 @@ The `query_documents.py` file utilizes the `start_conversation` function to retr
 
 The main.ipynb notebook serves as the entry point to call the above Python modules and build the Flyte LangChain Bot.
 
-## Issues
-
-1. Readthedoc loader failed to read flyte doc. Need to add article tags in langchain readthedoc loader source code (will raise pr).
-```
-if len(text) == 0:
-    text = soup.find_all("article", {"role": "main"})
-```
-
-2. code-server python nav is not working
-https://github.com/coder/code-server/issues/2341
 
 ## References
 
