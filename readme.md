@@ -59,8 +59,7 @@ Before we dive into the building process, let's briefly understand how Flyte Lan
 
 Flyte ease the process to run a kubernetes pod on machines. 
 
-1. Build a docker image equipped with developer tools (code-server, jupyterlab, vim, etc)
-https://github.com/MaastrichtU-IDS/jupyterlab/blob/8bc639a46ec2213cb909025d98bae4103019d1cd/Dockerfile#L1
+1. Build a docker image equipped with developer tools (code-server, jupyterlab, vim, etc). Refer to [MaastrichtU-IDS/jupyterlab](https://github.com/MaastrichtU-IDS/jupyterlab/blob/8bc639a46ec2213cb909025d98bae4103019d1cd/Dockerfile#L1)
 
 2. Run a sleeping task with gpu resources (gpu makes embedding much faster)
 
