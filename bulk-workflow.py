@@ -6,9 +6,12 @@ from ingest_data import load_and_split_documents, embed_and_vectorize_documents
 from query_documents import get_chain
 from typing import List
 
+
 @task(
-    requests=Resources(cpu="16", mem="240Gi", gpu="6"),
-    limits=Resources(cpu="16", mem="240Gi", gpu="6"),
+    requests=Resources(cpu="4", mem="64Gi", gpu="1"),
+    limits=Resources(cpu="4", mem="64Gi", gpu="1"),
+    cache=True,
+    cache_version="0.0.0"
 )
 def ingest() -> FlyteFile:
     documents = load_and_split_documents()
@@ -17,6 +20,10 @@ def ingest() -> FlyteFile:
 
     return FlyteFile("./vectorstore.pt")
 
+@task(
+    requests=Resources(cpu="4", mem="64Gi", gpu="1"),
+    limits=Resources(cpu="4", mem="64Gi", gpu="1"),
+)
 def query(vectorstore_file: FlyteFile, questions: List[str]):
     vectorstore = torch.load(vectorstore_file)
     qa_chain = get_chain(vectorstore)

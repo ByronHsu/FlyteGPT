@@ -89,7 +89,7 @@ Flyte provides an simple pythonic interface to run tasks on kubernetes cluster. 
 
 ### Development
 
-Check out [dev-workflow](./dev-workflow.py)
+Check out [dev-workflow.py](./dev-workflow.py)
 
 In the development stage, I wanted to utilize the GPU nodes in the cluster. To achieve this, I launched a pod that was built with both VSCode and Jupyter Notebook. I then connected to the pod using a browser-based interface.
 
@@ -118,14 +118,14 @@ def workflow():
 
 ### Bulk Inference
 
-Check out [bulk-workflow](./bulk-workflow.py)
+Check out [bulk-workflow.py](./bulk-workflow.py)
 
 Once we ensure there are no more syntax, dependencies, cuda issues in the development stage, we can move on to bulk inference! To fully leverage Flyte, we can break it down to two tasks: Ingestion and Query. The major benefit of using Flyte is that the task result can be cached. To be more specific, the ingestion phase usually takes a long time, and the task can be **skipped** because of the cache if it was already run before.
 
 ```python
 @task(
-    requests=Resources(cpu="16", mem="240Gi", gpu="6"),
-    limits=Resources(cpu="16", mem="240Gi", gpu="6"),
+    requests=Resources(cpu="4", mem="64Gi", gpu="1"),
+    limits=Resources(cpu="4", mem="64Gi", gpu="1"),
     cache=True,
     cache_version="0.0.0"
 )
@@ -136,6 +136,10 @@ def ingest() -> FlyteFile:
 
     return FlyteFile("./vectorstore.pt")
 
+@task(
+    requests=Resources(cpu="4", mem="64Gi", gpu="1"),
+    limits=Resources(cpu="4", mem="64Gi", gpu="1"),
+)
 def query(vectorstore_file: FlyteFile, questions: List[str]):
     vectorstore = torch.load(vectorstore_file)
     qa_chain = get_chain(vectorstore)
