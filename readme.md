@@ -25,7 +25,7 @@ I am extremely amazed by how deep FlyteGPT understands Flyte. The answers are no
 
 ## How FlyteGPT works
 
-LangChain provides a great abstraction and makes building FlyteGPT easy. There are mainly two steps: Ingestion and Query.
+I collected the data from github and public slack channel, and used LangChain to build a Q&A chat bot. LangChain provides a great abstraction and makes building FlyteGPT easy. There are mainly two steps: Ingestion and Query.
 
 ### 1. Ingest documents into a queriable format
 - Load documents (document loader): The bot loads documents using a document loader, which can handle various data types.
