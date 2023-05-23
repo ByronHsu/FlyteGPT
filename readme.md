@@ -120,7 +120,7 @@ def workflow():
 
 Check out [bulk-workflow.py](./bulk-workflow.py)
 
-Once we ensure there are no more syntax, dependencies, cuda issues in the development stage, we can move on to bulk inference! To fully leverage Flyte, we can break it down to two tasks: Ingestion and Query. The major benefit of using Flyte is that the task result can be cached. To be more specific, the ingestion phase usually takes a long time, and the task can be **skipped** because of the cache if it was already run before.
+Once we ensure there are no more syntax, dependencies, cuda issues in the development stage, we can move on to bulk inference! To fully leverage Flyte, we can break it down to two tasks: Ingestion and Query. The major benefit of using Flyte is that the task result can be cached. To be more specific, the ingestion phase usually takes a long time, and the task can be **skipped** if it was already run before.
 
 ```python
 @task(
