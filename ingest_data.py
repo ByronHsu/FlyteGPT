@@ -151,7 +151,7 @@ def load_and_split_documents():
     python_documents = get_documents_from_python_data("./data/flytekit")
     golang_documents = get_documents_from_golang_data("./data/flyteplugins") + get_documents_from_golang_data("./data/flytepropeller") + get_documents_from_golang_data("./data/flyteadmin")
     rst_documents = get_documents_from_rst_data("./data/flyte")
-    proto_documents = get_documents_from_golang_data("./data/flyteidl")
+    proto_documents = get_documents_from_proto_data("./data/flyteidl")
     return slack_documents + python_documents + golang_documents + rst_documents + proto_documents
 
 def embed_and_vectorize_documents(documents):
